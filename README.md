@@ -1,25 +1,24 @@
 # Personal_Assistant
 
-import pyttsx3
-import datetime
-import speech_recognition as sr
-import wikipedia 
-import webbrowser
-import os
-import random
-import pywhatkit
-from googletrans import Translator
+    import pyttsx3
+    import datetime
+    import speech_recognition as sr
+    import wikipedia 
+    import webbrowser
+    import os
+    import random
+    import pywhatkit
+    from googletrans import Translator
 
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
-# print(voices[1].id)
-engine.setProperty('voice',voices[2].id)
+    engine = pyttsx3.init('sapi5')
+    voices = engine.getProperty('voices')
+    engine.setProperty('voice',voices[2].id)
 
-def speak(audio):
+    def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-def wishMe():
+    def wishMe():
     hour = int (datetime.datetime.now().hour)
     if hour >= 0 and hour<= 12:
         speak("Good Morning ")
@@ -29,13 +28,13 @@ def wishMe():
         speak("Good Evening ")
     
 
-def address():
+    def address():
         speak("Whats your good name ?")
         goodName=takeCommand()
         speak(f" Oh Hi {goodName}!! I'm your personal assistant Gidddi")
         return goodName
 
-def takeCommand():
+    def takeCommand():
     # it takes microphone input and return string output
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -55,7 +54,7 @@ def takeCommand():
     return query
 
 
-if __name__=="__main__":
+    if __name__=="__main__":
     
     speak("Hello !!")
     speak("How can I help you ?")
